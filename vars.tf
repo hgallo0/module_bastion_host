@@ -17,11 +17,11 @@ variable "desired_capacity" {
   description = "the capacity the autoscaling group should be set to"
 }
 variable "subnet_id" {
-  #type = "list"
+  #type = list
   description = "the subnets in which the host can live"
 }
 variable "azs" {
-  type        = "list"
+  type        = list
   description = "the list of availability zones in which the host can live"
 }
 
