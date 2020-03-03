@@ -16,14 +16,6 @@
   owners = ["020351640293"] # amazon
 }*/
 
-/*locals {
-  #aggregated_user_data = "${join("\n", var.user_data)}"
-  template_path        = "${path.module}/templates/data.sh"
-}
-
-data "template_file" "default" {
-  template = "${file(local.template_path)}"
-}*/
 
 data "template_file" "default" {
   template = "${file("templates/data.tpl")}"
