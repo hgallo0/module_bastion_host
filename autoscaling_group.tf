@@ -3,10 +3,10 @@ resource "aws_autoscaling_group" "bastion" {
   max_size                  = var.max_size
   min_size                  = var.min_size
   health_check_grace_period = var.gracePeriod
-  desired_capacity     = var.desired_capacity
-  force_delete         = true
-  launch_configuration = aws_launch_configuration.as_conf.name
-  vpc_zone_identifier  = var.subnet_id
+  desired_capacity          = var.desired_capacity
+  force_delete              = true
+  launch_configuration      = aws_launch_configuration.as_conf.name
+  vpc_zone_identifier       = var.subnet_id
 
   dynamic "tag" {
     for_each = var.asg_tags
