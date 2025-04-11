@@ -8,7 +8,7 @@ resource "aws_autoscaling_group" "bastion" {
   force_delete         = true
   launch_configuration = aws_launch_configuration.as_conf.name
   vpc_zone_identifier  = var.subnet_id
-  availability_zones   = var.azs
+  #availability_zones   = var.azs
 
   tag {
     key                 = "Name"
