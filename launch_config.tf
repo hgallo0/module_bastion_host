@@ -1,24 +1,9 @@
-/*data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    #values = ["ubuntu/images/hvm-ssd/ubuntu-*-18.04-amd64-server-*"]
-    values = ["amazon-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  #owners = ["099720109477"] # Canonical
-  owners = ["020351640293"] # amazon
-}*/
-
+# data "template_file" "default" {
+#   template = "${file("templates/data.tpl")}"
+# }
 
 data "template_file" "default" {
-  template = "${file("templates/data.tpl")}"
+  template = file(var.template_file_path)
 }
 
 resource "aws_launch_configuration" "as_conf" {
