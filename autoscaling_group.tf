@@ -1,8 +1,8 @@
 resource "aws_autoscaling_group" "bastion" {
-  name                      = "bastion"
+  name                      = var.tagName
   max_size                  = var.max_size
   min_size                  = var.min_size
-  health_check_grace_period = 300
+  health_check_grace_period = var.tagName
   #health_check_type         = "EC2"
   desired_capacity     = var.desired_capacity
   force_delete         = true
@@ -12,7 +12,7 @@ resource "aws_autoscaling_group" "bastion" {
 
   tag {
     key                 = "Name"
-    value               = "bastion"
+    value               = var.tagName
     propagate_at_launch = true
   }
   tag {

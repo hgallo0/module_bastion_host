@@ -29,3 +29,13 @@ variable "azs" {
 variable "vpc_id" {
   description = "the vpc in which the host should be spun up"
 }
+
+# server tag name
+variable "tagName" {
+  description = "Tag Name"
+}
+
+variable "gracePeriod" {
+  description = "The amount of time, in seconds, after a new EC2 instance comes into service and before Amazon EC2 Auto Scaling starts checking its health status."
+  default     = 300
+}
