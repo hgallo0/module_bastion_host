@@ -44,3 +44,29 @@ variable "template_file_path" {
   description = "The file path for the template used in the launch configuration"
   default     = "templates/data.tpl"
 }
+
+variable "asg_tags" {
+  description = "List of tags to apply to the Auto Scaling Group"
+  type        = list(object({
+    key                 = string
+    value               = string
+    propagate_at_launch = bool
+  }))
+  default = [
+    {
+      key                 = "Name"
+      value               = "default-name"
+      propagate_at_launch = true
+    },
+    {
+      key                 = "Terraform"
+      value               = "true"
+      propagate_at_launch = true
+    },
+    {
+      key                 = "Class"
+      value               = "cs622"
+      propagate_at_launch = true
+    }
+  ]
+}

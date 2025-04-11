@@ -10,15 +10,13 @@ resource "aws_autoscaling_group" "bastion" {
   vpc_zone_identifier  = var.subnet_id
   #availability_zones   = var.azs
 
-  tag {
-    key                 = "Name"
-    value               = var.tagName
-    propagate_at_launch = true
-  }
-  tag {
-    key                 = "Terraform"
-    value               = "true"
-    propagate_at_launch = true
+  dynamic "tag" {
+    for_each = var.asg_tags
+    content {
+      key                 = tag.value.key
+      value               = tag.value.value
+      propagate_at_launch = tag.value.propagate_at_launch
+    }
   }
 
   timeouts {
