@@ -39,3 +39,8 @@ variable "gracePeriod" {
   description = "The amount of time, in seconds, after a new EC2 instance comes into service and before Amazon EC2 Auto Scaling starts checking its health status."
   default     = 300
 }
+
+variable "template_file_path" {
+  description = "The file path for the template used in the launch configuration"
+  default     = "templates/data.tpl"
+}

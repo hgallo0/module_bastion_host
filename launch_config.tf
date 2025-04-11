@@ -1,5 +1,9 @@
+# data "template_file" "default" {
+#   template = "${file("templates/data.tpl")}"
+# }
+
 data "template_file" "default" {
-  template = "${file("templates/data.tpl")}"
+  template = file(var.template_file_path)
 }
 
 resource "aws_launch_configuration" "as_conf" {
