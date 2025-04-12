@@ -21,7 +21,7 @@ variable "subnet_id" {
   description = "the subnets in which the host can live"
 }
 variable "azs" {
-  type        = list
+  type        = list(any)
   description = "the list of availability zones in which the host can live"
 }
 
@@ -43,4 +43,40 @@ variable "gracePeriod" {
 variable "template_file_path" {
   description = "The file path for the template used in the launch configuration"
   default     = "templates/data.tpl"
+}
+
+variable "image" {
+  description = "The AMI ID to use for the launch configuration"
+  default     = "ami-062f7200baf2fa504"
+}
+
+variable "instance" {
+  description = "The instance type to use for the launch configuration"
+  default     = "t2.micro"
+}
+
+variable "asg_tags" {
+  description = "List of tags to apply to the Auto Scaling Group"
+  type = list(object({
+    key                 = string
+    value               = string
+    propagate_at_launch = bool
+  }))
+  default = [
+    {
+      key                 = "Name"
+      value               = "default-name"
+      propagate_at_launch = true
+    },
+    {
+      key                 = "Terraform"
+      value               = "true"
+      propagate_at_launch = true
+    },
+    {
+      key                 = "Class"
+      value               = "cs622"
+      propagate_at_launch = true
+    }
+  ]
 }
