@@ -61,6 +61,12 @@ variable "allowed_ports" {
   default     = [22, 80, 443] # Example ports: SSH, HTTP, HTTPS
 }
 
+variable "allowed_cidrs" {
+  description = "List of CIDR blocks to allow for inbound traffic"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+}
+
 variable "asg_tags" {
   description = "List of tags to apply to the Auto Scaling Group"
   type = list(object({
