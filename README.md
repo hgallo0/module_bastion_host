@@ -40,6 +40,8 @@ This Terraform module creates a bastion host with an Auto Scaling Group, Launch 
 ### Security Group Variables
 
 - `vpc_id` (required): The VPC in which the bastion host should be created.
+- `allowed_ports` (optional): List of ports to allow for inbound traffic. Default: `[22, 80, 443]`.
+- `allowed_cidrs` (optional): List of CIDR blocks to allow for inbound traffic. Default: `["0.0.0.0/0"]`.
 
 ### General Variables
 
@@ -64,4 +66,13 @@ module "bastion_host" {
   azs             = ["us-east-1a", "us-east-1b"]
   vpc_id          = "vpc-123456"
   tagName         = "bastion-host"
+  allowed_ports   = [22, 80, 443]
+  allowed_cidrs   = ["0.0.0.0/0"]
+  asg_tags = [
+    {
+      key                 = "Environment"
+      value               = "production"
+      propagate_at_launch = true
+    }
+  ]
 }
