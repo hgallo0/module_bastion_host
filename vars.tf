@@ -55,6 +55,12 @@ variable "instance" {
   default     = "t2.micro"
 }
 
+variable "allowed_ports" {
+  description = "List of ports to allow for inbound traffic"
+  type        = list(number)
+  default     = [22, 80, 443] # Example ports: SSH, HTTP, HTTPS
+}
+
 variable "asg_tags" {
   description = "List of tags to apply to the Auto Scaling Group"
   type = list(object({
