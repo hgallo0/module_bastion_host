@@ -47,7 +47,8 @@ variable "template_file_path" {
 
 variable "image" {
   description = "The AMI ID to use for the launch configuration"
-  default     = "ami-062f7200baf2fa504"
+  #default     = "ami-062f7200baf2fa504"
+  default      = "ami-0cae6d6fe6048ca2c"
 }
 
 variable "instance" {
